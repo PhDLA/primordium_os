@@ -11,6 +11,11 @@ module.exports = {
 
         ui.display(moduleOut);
 
+        // --- SEND TO WEBSOCKET ---
+        if (global.PRIMORDIUM_WS) {
+            global.PRIMORDIUM_WS.send(moduleOut);
+        }
+
         console.log("[APP] Runtime finished");
     }
 };
