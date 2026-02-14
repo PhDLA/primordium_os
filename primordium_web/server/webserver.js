@@ -35,7 +35,9 @@ function start() {
 }
 
 // --- AUTO-START ---
-start();
+const app = require("../../primordium_app/app.js");
+app.start();
+
 
 
 
