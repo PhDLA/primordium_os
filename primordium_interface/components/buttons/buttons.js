@@ -1,0 +1,1 @@
+module.exports = { click() { console.log("[UI] Button clicked"); } };

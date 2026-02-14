@@ -1,0 +1,1 @@
+module.exports = { render(t) { console.log("[UI] Rendering:", t); } };

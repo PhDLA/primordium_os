@@ -1,0 +1,1 @@
+module.exports = { panel() { return "editor panel"; } };

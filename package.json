@@ -1,0 +1,12 @@
+{
+  "name": "primordium-os",
+  "version": "1.0.0",
+  "description": "Primordium OS Prototype – Modular Node.js runtime with engine pipeline, module system, UI shell and real-time WebSocket boot visualization.",
+  "main": "primordium_web/server/webserver.js",
+  "scripts": {
+    "start": "node primordium_web/server/webserver.js"
+  },
+  "dependencies": {
+    "ws": "^8.13.0"
+  }
+}

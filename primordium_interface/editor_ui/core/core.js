@@ -1,0 +1,1 @@
+module.exports = { init() { console.log("[UI] Editor core loaded"); } };

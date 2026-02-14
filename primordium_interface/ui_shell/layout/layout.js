@@ -1,0 +1,1 @@
+module.exports = { layout(c) { return "[LAYOUT] " + c; } };

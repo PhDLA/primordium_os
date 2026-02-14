@@ -1,0 +1,1 @@
+module.exports = { open() { console.log("[UI] Panel opened"); } };

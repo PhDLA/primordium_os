@@ -1,0 +1,1 @@
+module.exports = { onClick(h) { console.log("[UI] Click event"); h(); } };
