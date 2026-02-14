@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const WebSocket = require("ws");
 
+// --- HTTP SERVER ---
 const server = http.createServer((req, res) => {
     const file = req.url === "/" ? "index.html" : req.url;
     const filePath = path.join(__dirname, "../client", file);
@@ -16,20 +17,22 @@ const server = http.createServer((req, res) => {
     }
 });
 
+// --- WEBSOCKET SERVER ---
 const wss = new WebSocket.Server({ server });
 
-module.exports = {
-    start() {
-         const PORT = process.env.PORT || 8080;
+// --- START FUNCTION ---
+function start() {
+    const PORT = process.env.PORT || 8080;
 
-         server.listen(PORT, () => {
-               console.log("[WEB] Server running on port " + PORT);
-          });
+    server.listen(PORT, () => {
+        console.log("[WEB] Server running on port " + PORT);
+    });
 
+    wss.on("connection", ws => {
+        console.log("[WEB] Client connected");
+        global.PRIMORDIUM_WS = ws;
+    });
+}
 
-        wss.on("connection", ws => {
-            console.log("[WEB] Client connected");
-            global.PRIMORDIUM_WS = ws;
-        });
-    }
-};
+// --- AUTO-START ---
+start();
