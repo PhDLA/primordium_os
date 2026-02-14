@@ -20,9 +20,12 @@ const wss = new WebSocket.Server({ server });
 
 module.exports = {
     start() {
-        server.listen(8080, () => {
-            console.log("[WEB] Server running at http://localhost:8080");
-        });
+         const PORT = process.env.PORT || 8080;
+
+         server.listen(PORT, () => {
+               console.log("[WEB] Server running on port " + PORT);
+          });
+
 
         wss.on("connection", ws => {
             console.log("[WEB] Client connected");
