@@ -1,36 +1,26 @@
 module.exports = [
-    "[BOOT] Initializing kernel...",
-    "[KERNEL] Allocating memory regions...",
-    "[KERNEL] Mapping virtual address space...",
-    "[KERNEL] Loading interrupt handlers...",
-    "[KERNEL] Kernel OK.",
+    { text: "[BOOT] Initializing kernel...", delay: 200 },
+    { text: "[KERNEL] Allocating memory regions...", delay: 150 },
+    { text: "[KERNEL] Mapping virtual address space...", delay: 150 },
+    { text: "[KERNEL] Loading interrupt handlers...", delay: 150 },
+    { text: "[KERNEL] Kernel OK.", delay: 100 },
 
-    "[MODULE] Loading core modules...",
-    "[MODULE] fs.sys loaded",
-    "[MODULE] net.sys loaded",
-    "[MODULE] ui.sys loaded",
-    "[MODULE] runtime.sys loaded",
-    "[MODULE] All modules loaded.",
+    { text: "[MODULE] Loading core modules...", delay: 200 },
+    { progress: true, steps: 10, prefix: "[MODULE] Loading", delay: 80 },
 
-    "[SYS] Checking memory...",
-    "[SYS] 4096 MB OK",
-    "[SYS] Swap OK",
+    { text: "[SYS] Checking memory...", delay: 150 },
+    { text: "[SYS] 4096 MB OK", delay: 100 },
+    { text: "[SYS] Swap OK", delay: 100 },
 
-    "[SERV] Starting system services...",
-    "[SERV] IPC service online",
-    "[SERV] Scheduler online",
-    "[SERV] Event bus online",
-    "[SERV] All services running.",
+    { text: "[SERV] Starting system services...", delay: 200 },
+    { text: "[SERV] All services running.", delay: 150 },
 
-    "[UI] Loading UI shell...",
-    "[UI] Initializing renderer...",
-    "[UI] UI shell ready.",
+    { text: "[UI] Loading UI shell...", delay: 150 },
+    { text: "[UI] UI shell ready.", delay: 100 },
 
-    "[RUNTIME] Establishing pipeline...",
-    "[RUNTIME] Engine online",
-    "[RUNTIME] Module pipeline online",
-    "[RUNTIME] UI pipeline online",
-    "[RUNTIME] Runtime ready.",
+    { text: "[RUNTIME] Establishing pipeline...", delay: 150 },
+    { text: "[RUNTIME] Runtime ready.", delay: 100 },
 
-    "[SYSTEM] PRIMORDIUM OS is now ready."
+    { text: "[SYSTEM] PRIMORDIUM OS is now ready.", delay: 0 }
 ];
+
