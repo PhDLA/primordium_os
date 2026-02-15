@@ -6,7 +6,6 @@ module.exports = {
         const formatted = layout.layout(text);
         renderer.render(formatted);
 
-        // --- SEND TO WEBSOCKET ---
         if (global.PRIMORDIUM_WS) {
             global.PRIMORDIUM_WS.send(formatted);
         }
