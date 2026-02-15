@@ -1,1 +1,5 @@
-module.exports = { layout(c) { return "[LAYOUT] " + c; } };
+module.exports = {
+    layout(c) {
+        return c; // nincs több prefix
+    }
+};
