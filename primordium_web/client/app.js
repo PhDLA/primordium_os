@@ -13,18 +13,20 @@ socket.onmessage = (event) => {
     if (text.startsWith("__PROGRESS__")) {
         const clean = text.replace("__PROGRESS__", "").trim();
 
-        const lines = logBox.innerText.split("\n");
+        const lines = logBox.textContent.split("\n");
         const last = lines[lines.length - 1];
 
         if (last.startsWith("[MODULE] Loading")) {
             lines[lines.length - 1] = clean;
-            logBox.innerText = lines.join("\n");
+            logBox.textContent = lines.join("\n");
         } else {
-            logBox.innerText += clean + "\n";
+            logBox.textContent += clean + "\n";
         }
 
         return;
     }
 
-    logBox.innerText += text + "\n";
+    logBox.textContent += text + "\n";
 };
+
+
