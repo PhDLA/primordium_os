@@ -1,6 +1,7 @@
 const core = require("./core/app_core.js");
 const runtime = require("./runtime/app_runtime.js");
 const ui = require("./ui/app_ui.js");
+const boot = require("./runtime/boot_sequence.js");
 
 module.exports = {
     async start() {
@@ -9,7 +10,11 @@ module.exports = {
         core.init();
         ui.start();
 
-        await runtime.run("hello primordium");
+        // --- BOOT SEQUENCE ---
+        for (const line of boot) {
+            await runtime.run(line);
+            await new Promise(r => setTimeout(r, 300)); // 300ms delay
+        }
 
         console.log("=== PRIMORDIUM APPLICATION END ===");
     }
