@@ -8,5 +8,6 @@ body {
 
 #logBox {
     white-space: pre;
-    line-height: 1.35;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 15px;
 }
