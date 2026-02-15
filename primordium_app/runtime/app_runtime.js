@@ -9,14 +9,9 @@ module.exports = {
         const engineOut = engine.process(input);
         const moduleOut = await modulePipe.process(engineOut);
 
+        // CSAK EZ KELL
         ui.display(moduleOut);
-
-        // --- SEND TO WEBSOCKET ---
-        if (global.PRIMORDIUM_WS) {
-            global.PRIMORDIUM_WS.send(moduleOut);
-        }
 
         console.log("[APP] Runtime finished");
     }
 };
-
