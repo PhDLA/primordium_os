@@ -18,16 +18,17 @@ module.exports = {
                 await new Promise(r => setTimeout(r, step.delay));
             }
 
-            if (step.type === "progress") {
-                for (let i = 1; i <= step.steps; i++) {
-                    const filled = "█".repeat(i);
-                    const empty = "░".repeat(step.steps - i);
-                    const percent = Math.floor((i / step.steps) * 100);
+if (step.type === "progress") {
+    for (let i = 1; i <= step.steps; i++) {
+        const filled = "█".repeat(i);
+        const empty = "░".repeat(step.steps - i);
+        const percent = Math.floor((i / step.steps) * 100);
 
-                    await runtime.run(`${step.prefix} ${filled}${empty} ${percent}%`);
-                    await new Promise(r => setTimeout(r, step.delay));
-                }
-            }
+        await runtime.run(`__PROGRESS__ ${step.prefix} ${filled}${empty} ${percent}%`);
+        await new Promise(r => setTimeout(r, step.delay));
+    }
+}
+
         }
 
         // --- ENTER SHELL ---
