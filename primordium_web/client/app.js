@@ -10,23 +10,29 @@ socket.onmessage = (event) => {
     const text = event.data;
     const logBox = document.getElementById("logBox");
 
+    // PROGRESS BAR
     if (text.startsWith("__PROGRESS__")) {
         const clean = text.replace("__PROGRESS__", "").trim();
 
-        const lines = logBox.textContent.split("\n");
-        const last = lines[lines.length - 1];
+        // jelenlegi sorok
+        let lines = logBox.textContent.split("\n");
 
-        if (last.startsWith("[MODULE] Loading")) {
+        // ha az utolsó sor progress bar → felülírjuk
+        if (lines[lines.length - 1].startsWith("[MODULE] Loading")) {
             lines[lines.length - 1] = clean;
-            logBox.textContent = lines.join("\n");
         } else {
-            logBox.textContent += clean + "\n";
+            lines.push(clean);
         }
 
+        // teljes tartalom újraépítése
+        logBox.textContent = lines.join("\n");
         return;
     }
 
-    logBox.textContent += text + "\n";
+    // NORMÁL SOR
+    let lines = logBox.textContent.split("\n");
+    lines.push(text);
+    logBox.textContent = lines.join("\n");
 };
 
 
