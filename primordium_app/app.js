@@ -13,7 +13,7 @@ module.exports = {
         // --- BOOT SEQUENCE ---
         for (const line of boot) {
             await runtime.run(line);
-            await new Promise(r => setTimeout(r, 300)); // 300ms delay
+            await new Promise(r => setTimeout(r, 120)); // 300ms delay
         }
 
         console.log("=== PRIMORDIUM APPLICATION END ===");
