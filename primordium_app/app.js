@@ -21,7 +21,7 @@ module.exports = {
 if (step.type === "progress") {
     for (let i = 1; i <= step.steps; i++) {
         const filled = "█".repeat(i);
-        const empty = "░".repeat(step.steps - i);
+        const empty = "#".repeat(step.steps - i);
         const percent = Math.floor((i / step.steps) * 100);
 
         await runtime.run(`__PROGRESS__ ${step.prefix} ${filled}${empty} ${percent}%`);
