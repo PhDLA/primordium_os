@@ -11,10 +11,29 @@ module.exports = {
         ui.start();
 
         // --- BOOT SEQUENCE ---
-        for (const line of boot) {
-            await runtime.run(line);
-            await new Promise(r => setTimeout(r, 120)); // 300ms delay
+        for (const step of boot) {
+
+            if (step.type === "log") {
+                await runtime.run(step.text);
+                await new Promise(r => setTimeout(r, step.delay));
+            }
+
+            if (step.type === "progress") {
+                for (let i = 1; i <= step.steps; i++) {
+                    const filled = "█".repeat(i);
+                    const empty = "░".repeat(step.steps - i);
+                    const percent = Math.floor((i / step.steps) * 100);
+
+                    await runtime.run(`${step.prefix} ${filled}${empty} ${percent}%`);
+                    await new Promise(r => setTimeout(r, step.delay));
+                }
+            }
         }
+
+        // --- ENTER SHELL ---
+        await runtime.run("[SYSTEM] Entering interactive shell...");
+        await runtime.run("PRIMORDIUM OS v1.0");
+        await runtime.run(">");
 
         console.log("=== PRIMORDIUM APPLICATION END ===");
     }
